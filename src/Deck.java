@@ -1,49 +1,55 @@
-import java.util.ArrayList;
+import java.util.*;
+public class Deck{
+    public int[] suits = {1,1,1,1,1,1,1,1,1,1,1,1,1,2,2,2,2,2,2,2,2,2,2,2,2,2,3,3,3,3,3,3,3,3,3,3,3,3,3,4,4,4,4,4,4,4,4,4,4,4,4,4,};
+    public int[] ranks = {1,2,3,4,5,6,7,8,9,10,11,12,13,1,2,3,4,5,6,7,8,9,10,11,12,13,1,2,3,4,5,6,7,8,9,10,11,12,13,1,2,3,4,5,6,7,8,9,10,11,12,13,};
+//    public int[][] deck = {{1,2,3,4,5,6,7,8,9,10,11,12,13},{1,2,3,4,5,6,7,8,9,10,11,12,13},{1,2,3,4,5,6,7,8,9,10,11,12,13},{1,2,3,4,5,6,7,8,9,10,11,12,13}};
+    public ArrayList<int[]> deck = new ArrayList<>(Arrays.asList(suits,ranks));
 
-public class Deck {
+    public static String printCard(int suit, int rank){
+        String s = "";
+        String r = "";
+        switch(suit) {
+            case 1:
+                s = "Spades";
+            case 2:
+                s = "Hearts";
+            case 3:
+                s = "Clubs";
+            case 4:
+                s = "Diamonds";
+        }
+        switch(rank){
+            case 1:
+                r = "Ace";
+            case 2:
+                r = "Two";
+            case 3:
+                r = "Three";
+            case 4:
+                r = "Four";
+            case 5:
+                r = "Five";
+            case 6:
+                r = "Six";
+            case 7:
+                r = "Seven";
+            case 8:
+                r = "Eight";
+            case 9:
+                r = "Nine";
+            case 10:
+                r = "Ten";
+            case 11:
+                r = "Jack";
+            case 12:
+                r = "Queen";
+            case 13:
+                r = "King";
+        }
+        return r + " of" + s;
+    }
 
-    private ArrayList<Card> deck = new ArrayList<>();
-    private int size=0;
-
-    public Deck(String[] ranks, String[] suits, int[] pointValue) {
-        for (int i = 0; i < ranks.length; i++) {
-            for (int j = 0; j < suits.length; j++) {
-                deck.add(new Card(ranks[i], suits[j], pointValue[i]));
-                size++;
-            }
-        }
-    }
-
-    public void print () {
-        for (int i = 0; i < size; i++) {
-            deck.get(i).print();
-        }
-    }
-    public boolean isEmpty(){
-        if(size==0){
-            return true;
-        }
-        return false;
-    }
-    public int size(){
-        return size;
-    }
-    public Card deal(){
-        size--;
-        return deck.get(size);
-    }
-    public void shuffle(){
-        for(int i=51;i>0;i--){
-            int r=random(0,i);
-            Card temp = deck.get(i);
-            deck.set(i,deck.get(r));
-            deck.set(r,temp);
-        }
-    }
-    public int random(int min, int max){
-        int range = max-min+1;
-        int r=(int)(Math.random()*range)+min;
-        return r;
+    public dealHand(){
 
     }
 }
